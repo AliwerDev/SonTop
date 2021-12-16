@@ -3,7 +3,8 @@ const win = document.querySelector("#win");
 const loose = document.querySelector("#loose");
 const info = document.querySelector(".infoSpan");
 const result = document.querySelector(".result")
-const nMarta = document.querySelector(".ushancha")
+const nMarta = document.querySelector(".ushancha");
+const player = document.querySelector("#player");
 inputNum.focus();
 const btn = document.querySelector("#tekshir");
 let son = Math.floor(Math.random() * 100) + 1;
@@ -15,11 +16,14 @@ let n;
 function tekshir() {
     if(inputNum.value == son){
         win.style.display = ("flex");
+        player.src = "https://www.algorismic.uz/lesson/son-topish/audio/win.mp3";
+        player.play();
     }
     else if(inputNum.value == ""){
         result.classList.remove("d-none");
         result.innerHTML = "Iltimos son kiriting, bu sizga o`yinchoq emas!";
         inputNum.focus();
+        inputNum.value = "";
         return;
     }
     else if(inputNum.value > son && inputNum.value <= 100){
@@ -42,5 +46,7 @@ function tekshir() {
     if(count <= 3)info.style.color = ("#e84118");
     if(count === 0) {
         loose.style.display = ("flex");
+        player.src = "https://www.algorismic.uz/lesson/son-topish/audio/over.mp3";
+        player.play();
     }
 }
